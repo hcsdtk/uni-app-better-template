@@ -4,7 +4,7 @@
 
  技术栈
 
-- uni-app
+- uni-app vue2
 - @vue/composition-api
 
 
