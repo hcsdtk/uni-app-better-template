@@ -1,16 +1,87 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	}
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "主页",
+
+        "mp-weixin": {
+          "usingComponents": {
+            "component-a": "/pages/index-subpack/components/component-a",
+            "component-b": "/pages/index-subpack/components/component-b"
+          },
+          "componentPlaceholder": {
+            "component-a": "view",
+            "component-b": "view"
+          }
+        }
+      }
+    },
+    {
+      "path": "pages/info/index",
+      "style": {
+        "navigationBarTitleText": "个人中心",
+        "mp-weixin": {
+          "usingComponents": {
+            "async-page": "/pages/info-subpack/async-page"
+          },
+          "componentPlaceholder": {
+            "async-page": "view"
+          }
+        }
+      }
+    }
+  ],
+  "subPackages": [
+    {
+      "root": "pages/index-subpack",
+      "pages": [
+        {
+          "path": "index",
+          "style": {}
+        }
+      ]
+    },
+    {
+      "root": "pages/info-subpack",
+      "pages": [
+        {
+          "path": "index",
+          "style": {}
+        }
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "all",
+      "packages": ["pages/index-subpack"]
+    }
+  },
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#707070",
+    "selectedColor": "#d81e06",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/home.png",
+        "selectedIconPath": "static/home-c.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/info/index",
+        "iconPath": "static/user.png",
+        "selectedIconPath": "static/user-c.png",
+        "text": "我的"
+      }
+    ]
+  }
 }
